@@ -1,0 +1,9 @@
+.vscode/
+checkpoints/
+*.pyc
+**/__pycache__/
+output/
+pretrained_weights/
+data/images/
+visualization/
+data/annotations/
