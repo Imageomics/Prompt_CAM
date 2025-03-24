@@ -106,17 +106,17 @@ cub/
 
 Backbone | Dataset | Prompt-CAM(Acc top%1) | Checkpoint Link|
 --- | --- | --- | --- |
-dino | cub (CUB)| 73.2 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/Ep7FjOGfuptNkdOl60QA_jcBnS1zQFPunNkJY0G1pKsqFw?e=JymcQn) |
-dino | car (Stanford Cars) | 83.2 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EmnbzOGmy0hOn1uPVbrjkrwBj-0ZTseNjXMfWrv_wcCVkg?e=pwbAXa) |
-dino | dog (Stanford Dogs) | 81.1 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/Ehex8jehmXhFqQWjVnGGFowB-dxzu3m-pZW309xeE3rR2w?e=HPNRtD) |
-dino | pet (Oxford Pet) | 91.3 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/Enx5LqxPfOdArRWM__8q32gBFZfGx9wOOkGgP0Rhgnh48Q?e=nGAnXV) |
-dino | birds_525 (Birds-525) | 98.8 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/Er1WWfzknUFKroBwoq8_HjkBQmjlCdH2XpIoOlPXutTjsg?e=EeOSCk) |
+dino | cub (CUB)| 73.2 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
+dino | car (Stanford Cars) | 83.2 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns)|
+dino | dog (Stanford Dogs) | 81.1 |[url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
+dino | pet (Oxford Pet) | 91.3 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
+dino | birds_525 (Birds-525) | 98.8 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns)|
 
 Backbone | Dataset | Prompt-CAM(Acc top%1) | Checkpoint Link|
 --- | --- | --- | --- |
-dinov2 | cub (CUB) | 74.1 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EnxwNcC65A9MnQDsyZdo5JsBEjeZ5qRl28znynHxVYiErw?e=pi5uWG) |
-dinov2 | dog (Stanford Dogs) | 81.3| [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/ErnTUrh8lNxNuG-bm2RTjVwBnKZA030Sy8Fb3S0vwjtFUQ?e=K2Mk4O) |
-dinov2 | pet (Oxford Pet) | 92.7 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/Ep3F4_4Qn29FuWAAxxpURoQBkbIzvEkSyZSfnxJUxEcRcw?e=xj4EbT) |
+dinov2 | cub (CUB) | 74.1 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
+dinov2 | dog (Stanford Dogs) | 81.3| [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
+dinov2 | pet (Oxford Pet) | 92.7 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns)|
 
 ## Evaluation and Visualization
 - download the checkpoint from url in the [Table](#results--checkpoints) above and put it in the `checkpoints/{model}/{dataset}/` folder.
