@@ -1,0 +1,59 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Prompt-CAM: Making Vision Transformers Interpretable for
+  Fine-Grained Analysis
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Arpita
+    family-names: Chowdhury
+  - given-names: Dipanjyoti
+    family-names: Paul
+  - given-names: Zheda
+    family-names: Mai
+  - given-names: Jianyang
+    family-names: Gu
+  - given-names: Ziheng
+    family-names: Zhang
+  - given-names: Kazi Sajeed
+    family-names: Mehrab
+  - given-names: Elizabeth G.
+    family-names: Campolongo
+  - given-names: Daniel
+    family-names: Rubenstein
+  - given-names: Charles V.
+    family-names: Stewart
+  - given-names: Anuj
+    family-names: Karpatne
+  - given-names: Tanya
+    family-names: Berger-Wolf
+  - given-names: Yu
+    family-names: Su
+  - given-names: Wei-Lun
+    family-names: Chao
+identifiers:
+  - type: url
+    value: 'https://arxiv.org/pdf/2501.09333'
+repository-code: 'https://github.com/Imageomics/Prompt_CAM'
+abstract: >-
+  We present a simple usage of pre-trained Vision
+  Transformers (ViTs) for fine-grained analysis, aiming to
+  identify and localize the traits that distinguish visually
+  similar categories, such as different bird species or dog
+  breeds. 
+keywords:
+  - explainable-ai
+  - interpretable-ai
+  - imageomics
+  - fine-grained-classification
+  - vision-transformer
+  - interpretable
+license: MIT
+commit: Prompt-CAM
+version: 1.0.0
+date-released: '2025-03-24'

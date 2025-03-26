@@ -1,33 +1,21 @@
-# :mag: Prompt-CAM: A *Simpler* Interpretable Transformer for Fine-Grained Analysis (CVPR'25)
+# :mag: Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis(CVPR'25)
 
-This is an official implementation for [PROMPT-CAM: A Simpler Interpretable Transformer for Fine-Grained Analysis](https://arxiv.org/pdf/2501.09333) (CVPR'25)
+This is an official implementation for [PROMPT-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis](https://arxiv.org/pdf/2501.09333) (CVPR'25)
 
-The question we ask:
-<p align="center" style="color: blue;"></p>
+Introducing **Prompt-CAM**, a $${\textcolor{red}{\text{simple yet effective}}}$$ **interpretable transformer** that requires no architectural modifications to pre-trained ViTs, we just have to inject **class-specific prompts** into any ViT to make them interpretable.
 
-$${\textcolor{blue}{\text{How can we leverage \textbf{pre-trained ViTs}}}}$$
-$${\textcolor{blue}{\text{to identify traits that are special and specific for each fine-grained category?}}}$$
+Prompt CAM lets us explore:
+- 🧠 What the model thinks is important for each class?
+- ✨ Which traits are shared between two bird species?
+- 🎨 How different classes ‘see’ the same image differently!
 
-
-
-Introducing **Prompt-CAM**, a $${\textcolor{red}{\text{simple yet effective}}}$$ interpretable transformer that requires no architectural modifications to pre-trained ViTs.
-- We inject **class-specific prompts** into ViTs, forcing the model to attend to image patches uniquely important to each class.
-- This approach naturally unveils the most discriminative traits with clean, high-resolution attention maps—offering a near "free lunch" for interpretability in ViTs.
 <p align="center">
 <img src="samples/sample_image.png"/>
 </p>
 
 ## Quick Start: Try out the demo
-Witness the important traits of different class through the lens of Prompt-CAM with our interactive demos! 
-
 🔍 Ever wondered what traits stand out when a model looks at an image of one class but searches with another class in mind? 🤔
-
-Prompt CAM lets us explore:
-- ✨ Which traits are shared between two bird species?
-
-- 🧠 What the model thinks is important for each class?
-
-- 🎨 How different classes ‘see’ the same image differently!
+Witness the important traits of different class through the lens of Prompt-CAM with our interactive demos! 
 
 👉 Try our demo **without installing anything** in Gooogle Colab [![](https://img.shields.io/badge/Google_Colab-blue)](https://colab.research.google.com/drive/1co1P5LXSVb-g0hqv8Selfjq4WGxSpIFe?usp=sharing)
 
