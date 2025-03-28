@@ -196,7 +196,7 @@ If you find this repository useful, please consider citing our work :pencil: and
 @article{chowdhury2025prompt,
   title={Prompt-CAM: A Simpler Interpretable Transformer for Fine-Grained Analysis},
   author={Chowdhury, Arpita and Paul, Dipanjyoti and Mai, Zheda and Gu, Jianyang and Zhang, Ziheng and Mehrab, Kazi Sajeed and Campolongo, Elizabeth G and Rubenstein, Daniel and Stewart, Charles V and Karpatne, Anuj and others},
-  journal={Conference on Computer Vision and Pattern Recognition},
+  journal={arXiv preprint arXiv:2501.09333},
   year={2025}
 }
 ```
