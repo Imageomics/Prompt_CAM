@@ -70,8 +70,7 @@ cub/
 ## CUB
 
 - Download prepared dataset
-    - From [![](https://img.shields.io/badge/OneDrive-blue
-    )](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/El1vhfSkSAFGg-DyvJ9iSv8BLQwe8oN2H6uTWjoQygbH_g?e=6i41DJ)
+    - From [![](https://img.shields.io/badge/google_drive-yellow)](https://drive.google.com/drive/folders/1X3ikQEk_D7cKcyCnxbF3kJTsZ0LZfvVO?usp=sharing)
 - `Or` Prepare the dataset by yourself
     - You can download the CUB dataset from [the original website](https://www.vision.caltech.edu/datasets/cub_200_2011/) and put it in the `data/images/` folder.
     - You can use the dataset's provided train/val split to create the train/val splits and have their class numbers as the `prefix` of the respective image folder names(starting from 1).
@@ -83,8 +82,8 @@ cub/
 
 ## Pet Dataset
 - Download prepared dataset
-    - From [![](https://img.shields.io/badge/OneDrive-blue
-    )](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/El1vhfSkSAFGg-DyvJ9iSv8BLQwe8oN2H6uTWjoQygbH_g?e=6i41DJ)
+    - From [![](https://img.shields.io/badge/google_drive-yellow
+)](https://drive.google.com/drive/folders/1X3ikQEk_D7cKcyCnxbF3kJTsZ0LZfvVO?usp=sharing)
 </details>
 
 **To add new dataset, see [Extensions](#extensions)**
@@ -94,17 +93,17 @@ cub/
 
 Backbone | Dataset | Prompt-CAM(Acc top%1) | Checkpoint Link|
 --- | --- | --- | --- |
-dino | cub (CUB)| 73.2 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
-dino | car (Stanford Cars) | 83.2 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns)|
-dino | dog (Stanford Dogs) | 81.1 |[url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
-dino | pet (Oxford Pet) | 91.3 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
-dino | birds_525 (Birds-525) | 98.8 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns)|
+dino | cub (CUB)| 73.2 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dino | car (Stanford Cars) | 83.2 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dino | dog (Stanford Dogs) | 81.1 |[url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dino | pet (Oxford Pet) | 91.3 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dino | birds_525 (Birds-525) | 98.8 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
 
 Backbone | Dataset | Prompt-CAM(Acc top%1) | Checkpoint Link|
 --- | --- | --- | --- |
-dinov2 | cub (CUB) | 74.1 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
-dinov2 | dog (Stanford Dogs) | 81.3| [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns) |
-dinov2 | pet (Oxford Pet) | 92.7 | [url](https://buckeyemailosu-my.sharepoint.com/:f:/g/personal/chowdhury_150_buckeyemail_osu_edu/EkWvC903Y_JLh9GGRsfh7boBCXC1Sp61P72ccuRK4d3eHQ?e=bvqcns)|
+dinov2 | cub (CUB) | 74.1 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dinov2 | dog (Stanford Dogs) | 81.3| [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dinov2 | pet (Oxford Pet) | 92.7 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
 
 ## Evaluation and Visualization
 - download the checkpoint from url in the [Table](#results--checkpoints) above and put it in the `checkpoints/{model}/{dataset}/` folder.
