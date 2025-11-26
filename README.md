@@ -192,11 +192,13 @@ See [Visualization](#evaluation-and-visualization) above.
 # Citation [![Paper](https://img.shields.io/badge/paper-2501.09333-blue)](https://arxiv.org/pdf/2501.09333)
 If you find this repository useful, please consider citing our work :pencil: and giving a star :star2: :
 ```
-@article{chowdhury2025prompt,
-  title={Prompt-CAM: A Simpler Interpretable Transformer for Fine-Grained Analysis},
-  author={Chowdhury, Arpita and Paul, Dipanjyoti and Mai, Zheda and Gu, Jianyang and Zhang, Ziheng and Mehrab, Kazi Sajeed and Campolongo, Elizabeth G and Rubenstein, Daniel and Stewart, Charles V and Karpatne, Anuj and others},
-  journal={arXiv preprint arXiv:2501.09333},
-  year={2025}
+@InProceedings{Chowdhury_2025_CVPR,
+    author    = {Chowdhury, Arpita and Paul, Dipanjyoti and Mai, Zheda and Gu, Jianyang and Zhang, Ziheng and Mehrab, Kazi Sajeed and Campolongo, Elizabeth G. and Rubenstein, Daniel and Stewart, Charles V. and Karpatne, Anuj and Berger-Wolf, Tanya and Su, Yu and Chao, Wei-Lun},
+    title     = {Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2025},
+    pages     = {4375-4385}
 }
 ```
 ### Acknowledgement
