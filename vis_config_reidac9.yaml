@@ -1,0 +1,40 @@
+# Visualization Configuration for Reidac9 Dataset
+# Usage: python visualize.py --config vis_config_reidac9.yaml --checkpoint <path_to_checkpoint>
+
+# Dataset Configuration
+data: reidac9
+data_path: ./
+test_data: reidac9
+class_num: 9
+
+# Model Configuration
+model: dino
+pretrained_weights: vit_base_patch16_dino
+train_type: prompt_cam
+vpt_num: 200
+vpt_dropout: 0.1
+vpt_layer: null
+vpt_mode: null
+normalized: true
+
+# Visualization Settings
+vis_attn: true
+vis_cls: 0  # Class to visualize (0=Exterior, 1=Interior, 2=another, 3=bathroom, 4=bedroom, 5=dining_room, 6=document, 7=kitchen, 8=living_room)
+nmbr_samples: 10  # Number of samples to visualize
+top_traits: 4  # Number of top traits per sample to visualize
+vis_outdir: ./visualization
+
+# Training Configuration (needed for model loading)
+batch_size: 16
+test_batch_size: 1
+crop_size: 224
+final_run: true
+debug: false
+
+# Device Configuration
+gpu_num: 1
+device: cuda
+
+# Other Parameters
+random_seed: 42
+drop_path_rate: 0.1

@@ -4,6 +4,7 @@ from data.dataset.dog import get_dog
 from data.dataset.pet import get_pet
 from data.dataset.car import get_car
 from data.dataset.birds_525 import get_birds_525
+from data.dataset.reidac9 import get_reidac9
 
 
 def get_dataset(data, params, logger):
@@ -47,6 +48,14 @@ def get_dataset(data, params, logger):
             logger.info("Loading training data (final training data for birds_525)...")
             dataset_train = get_birds_525(params, 'trainval_combined')
             dataset_test = get_birds_525(params, 'test')
+        else:
+            raise NotImplementedError
+    elif data.startswith("reidac9"):
+        logger.info("Loading Reidac9 data ...")
+        if params.final_run:
+            logger.info("Loading training data (final training data for reidac9)...")
+            dataset_train = get_reidac9(params, 'trainval_combined')
+            dataset_test = get_reidac9(params, 'test')
         else:
             raise NotImplementedError
     else:
