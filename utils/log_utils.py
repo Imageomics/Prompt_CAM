@@ -7,6 +7,10 @@ from tabulate import tabulate
 
 from utils.distributed import get_rank, get_world_size
 from utils.setup_logging import setup_logging
+from utils.distributed import get_rank
+
+def is_main_process():
+    return get_rank() == 0
 
 
 def get_env_module():
@@ -51,6 +55,9 @@ def collect_env_info():
 def logging_env_setup(params) -> None:
     logger = setup_logging(
         params.gpu_num, get_world_size(), params.output_dir, name="Prompt_CAM")
+    
+    if not is_main_process():
+        return
 
     # Log basic information about environment, cmdline arguments, and config
     rank = get_rank()
@@ -64,24 +71,30 @@ def logging_env_setup(params) -> None:
     logger.info(pprint.pformat(params))
 
 def log_model_info(model, logger, verbose=False):
-    """Logs model info"""
-    if verbose:
-        logger.info(f"Classification Model:\n{model}")
     model_total_params = sum(p.numel() for p in model.parameters())
-    model_grad_params = sum(
-        p.numel() for p in model.parameters() if p.requires_grad)
-    model_grad_params_no_head = sum(p.numel() for n, p in model.named_parameters() if p.requires_grad and 'head' not in n)
-    logger.info("Total Parameters: {0}\t Gradient Parameters: {1}\t Gradient Parameters No Head: {2}".format(
-        model_total_params, model_grad_params, model_grad_params_no_head))
-    logger.info(f"total tuned percent:{(model_grad_params/model_total_params*100):.2f} %")
-    logger.info(f"total tuned percent no head:{(model_grad_params_no_head / model_total_params * 100):.2f} %")
+    model_grad_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    model_grad_params_no_head = sum(
+        p.numel() for n, p in model.named_parameters()
+        if p.requires_grad and 'head' not in n
+    )
 
-    # Print the names of parameters that require gradient updates
-    fine_tuned_params = [n for n, p in model.named_parameters() if p.requires_grad]
-    
-    logger.info("Fine-tuned Parameters:")
-    for param_name in fine_tuned_params:
-        logger.info(param_name)
-        
+    if is_main_process():
+        if verbose:
+            logger.info(f"Classification Model:\n{model}")
+
+        logger.info(
+            "Total Parameters: {0}\t Gradient Parameters: {1}\t Gradient Parameters No Head: {2}".format(
+                model_total_params, model_grad_params, model_grad_params_no_head
+            )
+        )
+        logger.info(f"total tuned percent:{(model_grad_params/model_total_params*100):.2f} %")
+        logger.info(f"total tuned percent no head:{(model_grad_params_no_head/model_total_params*100):.2f} %")
+
+        logger.info("Fine-tuned Parameters:")
+        for n, p in model.named_parameters():
+            if p.requires_grad:
+                logger.info(n)
+
     return model_grad_params_no_head
+
 

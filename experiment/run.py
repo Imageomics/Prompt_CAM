@@ -17,17 +17,41 @@ import time
 import csv
 import numpy as np
 from utils.setup_logging import get_logger
+import torch.distributed as dist
+
 
 logger = get_logger("Prompt_CAM")
+def init_distributed():
+    if "RANK" in os.environ and "WORLD_SIZE" in os.environ:
+        dist.init_process_group(backend="nccl")
+        torch.cuda.set_device(int(os.environ["LOCAL_RANK"]))
+        return True
+    return False
 
 
 def train(params, train_loader, val_loader, test_loader):
     model, tune_parameters, model_grad_params_no_head = get_model(params)
+
+    device = torch.device("cuda", params.local_rank)
+    model = model.to(device)
+
+    if params.distributed:
+        model = torch.nn.parallel.DistributedDataParallel(
+            model,
+            device_ids=[params.local_rank],
+            output_device=params.local_rank,
+            find_unused_parameters=True,  # IMPORTANT for VPT / Prompt-CAM
+        )
+
     trainer = Trainer(model, tune_parameters, params)
     train_metrics, best_eval_metrics, eval_metrics = trainer.train_classifier(train_loader, val_loader, test_loader)
     return train_metrics, best_eval_metrics, eval_metrics, model_grad_params_no_head, trainer.model
 
 def basic_run(params):
+    is_distributed = init_distributed()
+    params.distributed = is_distributed
+    params.local_rank = int(os.environ.get("LOCAL_RANK", 0))
+
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
     data_name = params.data.split("-")[-1]

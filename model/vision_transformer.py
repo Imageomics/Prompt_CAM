@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint
 from torch.jit import Final
-from timm.layers import DropPath, AttentionPoolLatent, RmsNorm, PatchDropout, SwiGLUPacked, \
+from timm.layers import LayerNorm, DropPath, AttentionPoolLatent, RmsNorm, PatchDropout, SwiGLUPacked, \
     trunc_normal_, lecun_normal_, resample_patch_embed, resample_abs_pos_embed, use_fused_attn, \
     get_act_layer, get_norm_layer, LayerType
 from timm.models._builder import build_model_with_cfg
@@ -378,3 +378,4 @@ def vit_base_patch16_clip_224_petl(pretrained: bool = False, **kwargs) -> Vision
     model = _create_vision_transformer_petl(
         'vit_base_patch16_clip_quickgelu_224', pretrained=pretrained, **dict(model_args, **kwargs))
     return model
+

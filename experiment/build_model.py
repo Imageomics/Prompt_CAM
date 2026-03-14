@@ -6,10 +6,15 @@ from model.vision_transformer import VisionTransformerPETL
 from utils.log_utils import log_model_info
 from timm.data import resolve_data_config
 from utils.setup_logging import get_logger
+import torch.distributed as dist
+
+def is_main_process():
+    return (not dist.is_available()) or (not dist.is_initialized()) or dist.get_rank() == 0
+
 
 logger = get_logger("Prompt_CAM")
 
-TUNE_MODULES = ['vpt']
+TUNE_MODULES = ['vpt','head']
 def get_model(params,visualize=False):
     params.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"Using device: {params.device}")
@@ -18,22 +23,21 @@ def get_model(params,visualize=False):
 
     ##########
     tune_parameters = []
-    if params.debug:
+    if params.debug and is_main_process():
         logger.info("Trainable params:")
 
     for name, parameter in model.named_parameters():
         if any(m in name for m in TUNE_MODULES):
             parameter.requires_grad = True
             tune_parameters.append(parameter)
-            if params.debug:
+            if params.debug and is_main_process():
                 logger.info("\t{}, {}, {}".format(name, parameter.numel(), parameter.shape))
         else:
             parameter.requires_grad = False
 
     model_grad_params_no_head = log_model_info(model, logger)
 
-    if not visualize:
-      model = model.cuda(device=params.device)
+    model = model.cuda(device=params.device)
     return model, tune_parameters, model_grad_params_no_head
 
 

@@ -5,6 +5,9 @@ from data.dataset.pet import get_pet
 from data.dataset.car import get_car
 from data.dataset.birds_525 import get_birds_525
 
+from torch.utils.data.distributed import DistributedSampler
+
+
 
 def get_dataset(data, params, logger):
     dataset_train, dataset_val, dataset_test = None, None, None
@@ -76,34 +79,59 @@ def get_loader(params, logger):
 
 def gen_loader(params, dataset_train, dataset_val, dataset_test):
     train_loader, val_loader, test_loader = None, None, None
-    if params.debug:
-        num_workers = 1
-    else:
-        num_workers = 4
+
+    num_workers = 1 if params.debug else 4
+
+    # -------- TRAIN --------
     if dataset_train is not None:
+        if getattr(params, "distributed", False):
+            train_sampler = DistributedSampler(dataset_train, shuffle=True)
+            shuffle = False
+        else:
+            train_sampler = None
+            shuffle = True
+
         train_loader = torch.utils.data.DataLoader(
             dataset_train,
             batch_size=params.batch_size,
-            shuffle=True,
+            shuffle=shuffle,
+            sampler=train_sampler,
             num_workers=num_workers,
             pin_memory=True,
             drop_last=True
         )
+
+    # -------- VAL --------
     if dataset_val is not None:
+        if getattr(params, "distributed", False):
+            val_sampler = DistributedSampler(dataset_val, shuffle=False)
+        else:
+            val_sampler = None
+
         val_loader = torch.utils.data.DataLoader(
             dataset_val,
             batch_size=params.test_batch_size,
             shuffle=False,
+            sampler=val_sampler,
             num_workers=num_workers,
             pin_memory=True
         )
+
+    # -------- TEST --------
     if dataset_test is not None:
+        if getattr(params, "distributed", False):
+            test_sampler = DistributedSampler(dataset_test, shuffle=False)
+        else:
+            test_sampler = None
+
         test_loader = torch.utils.data.DataLoader(
             dataset_test,
             batch_size=params.test_batch_size,
             shuffle=False,
+            sampler=test_sampler,
             num_workers=num_workers,
             pin_memory=True
-
         )
+
     return train_loader, val_loader, test_loader
+

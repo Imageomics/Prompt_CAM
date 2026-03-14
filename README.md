@@ -13,6 +13,14 @@ Prompt CAM lets us explore:
 <img src="samples/sample_image.png"/>
 </p>
 
+## Update
+
+Thank you for the people who created issues: 
+- Now our code base supports `python 3.10` with updated `timm==1.0.24`
+- Fixed minor visualization bugs
+- Our codebase now supports both single and multi-gpu usage for training
+
+
 ## Quick Start: Try out the demo
 🔍 Ever wondered what traits stand out when a model looks at an image of one class but searches with another class in mind? 🤔
 Witness the important traits of different class through the lens of Prompt-CAM with our interactive demos! 
@@ -32,7 +40,7 @@ Witness the important traits of different class through the lens of Prompt-CAM w
 
 ## Environment Setup  
 ```bash 
-conda create -n prompt_cam python=3.7
+conda create -n prompt_cam python=3.10
 conda activate prompt_cam  
 source env_setup.sh
 ```  
@@ -147,7 +155,8 @@ See [Data Preparation](#data-preparation) above.
 
 👉 To train the model on the `CUB dataset` using the `DINO` model, run the following command:
 ```python
-CUDA_VISIBLE_DEVICES=0  python main.py --config ./experiment/config/prompt_cam/dino/cub/args.yaml
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nproc_per_node=4 main.py --config ./experiment/config/prompt_cam/dino/cub/args.yaml --gpu_num 4
+
 ```
 The checkpoint will be saved in the `output/vit_base_patch16_dino/cub/` folder. Copy the checkpoint `model.pt` to the `checkpoints/dino/cub/` folder.
 
@@ -155,7 +164,7 @@ The checkpoint will be saved in the `output/vit_base_patch16_dino/cub/` folder. 
 
 👉 To train the model on the `Oxford Pet dataset` using the `DINO` model, run the following command:
 ```python
-CUDA_VISIBLE_DEVICES=0  python main.py --config ./experiment/config/prompt_cam/dino/pet/args.yaml
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nproc_per_node=4  main.py --config ./experiment/config/prompt_cam/dino/pet/args.yaml --gpu_num 4
 ```
 The checkpoint will be saved in the `output/vit_base_patch14_dino/pet/` folder. Copy the checkpoint `model.pt` to the `checkpoints/dino/pet/` folder.
 
@@ -163,7 +172,7 @@ The checkpoint will be saved in the `output/vit_base_patch14_dino/pet/` folder. 
 
 👉 To train the model on the `Oxford Pet dataset` using the `DINOv2` model, run the following command:
 ```python
-CUDA_VISIBLE_DEVICES=0  python main.py --config ./experiment/config/prompt_cam/dinov2/pet/args.yaml
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --nproc_per_node=4 python main.py --config ./experiment/config/prompt_cam/dinov2/pet/args.yaml --gpu_num 4
 ```
 
 The checkpoint will be saved in the `output/vit_base_patch14_dinov2/pet/` folder. Copy the checkpoint `model.pt` to the `checkpoints/dinov2/pet/` folder.

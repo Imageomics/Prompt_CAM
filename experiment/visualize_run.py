@@ -29,7 +29,7 @@ def basic_vis(params):
     _, _, test_loader = get_loader(params, logger)
 
     logger.info(f'Start loading model: {params.model}')
-    model, _ , _ = get_model(params)
+    model, _ , _ = get_model(params,visualize=True)
     model.load_state_dict(torch.load(params.checkpoint)['model_state_dict'])
     logger.info (f'Model loaded from {params.checkpoint}')
 

@@ -2,6 +2,7 @@ import torch.nn as nn
 from timm.layers import DropPath
 from timm.models.vision_transformer import LayerScale
 from timm.layers.trace_utils import _assert
+import torch.nn.functional as F
 import torch
 from typing import Any, Callable, Dict, Optional, Set, Tuple, Type, Union, List
 from model.mlp import MlpPETL

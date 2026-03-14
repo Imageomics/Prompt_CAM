@@ -8,8 +8,17 @@ from utils.misc import AverageMeter, EarlyStop
 from utils.setup_logging import get_logger
 from timm.utils import accuracy, update_summary
 import numpy as np
+import torch.distributed as dist
+
+
 logger = get_logger("Prompt_CAM")
+
 torch.backends.cudnn.benchmark = False
+def reduce_tensor(tensor):
+    if not dist.is_available() or not dist.is_initialized():
+        return tensor
+    dist.all_reduce(tensor, op=dist.ReduceOp.SUM)
+    return tensor
 
 class Trainer():
     """
@@ -31,7 +40,8 @@ class Trainer():
 
         if 'test_data' not in params:
             # solver related
-            logger.info("\tSetting up the optimizer...")
+            if self.is_main_process():
+                logger.info("\tSetting up the optimizer...")
             self.optimizer = make_optimizer(tune_parameters, params)
             self.scheduler = CosineLRScheduler(self.optimizer, t_initial=params.epoch,
                                                warmup_t=params.warmup_epoch, lr_min=params.lr_min,
@@ -64,14 +74,16 @@ class Trainer():
             loss = self.cls_criterion(outputs, targets)
 
             if loss == float('inf'):
-                logger.info(
-                    "encountered infinite loss, skip gradient updating for this batch!"
-                )
+                if self.is_main_process():
+                    logger.info(
+                        "encountered infinite loss, skip gradient updating for this batch!"
+                    )
                 return -1, -1, (-1, -1)
             elif torch.isnan(loss).any():
-                logger.info(
-                    "encountered nan loss, skip gradient updating for this batch!"
-                )
+                if self.is_main_process():
+                    logger.info(
+                        "encountered nan loss, skip gradient updating for this batch!"
+                    )
                 return -1, -1, (-1, -1)
 
         acc1, acc5 = accuracy(outputs, targets, topk=(1, 5))
@@ -87,15 +99,25 @@ class Trainer():
 
         return loss, outputs, (acc1, acc5)
 
+    def is_main_process(self):
+        return (not getattr(self.params, "distributed", False)) or \
+           torch.distributed.get_rank() == 0
+
+
     def train_one_epoch(self, epoch, loader):
         loss_m = AverageMeter()
         top1_m = AverageMeter()
         top5_m = AverageMeter()
+        if getattr(self.params, "distributed", False):
+            if hasattr(loader.sampler, "set_epoch"):
+                loader.sampler.set_epoch(epoch)
+
         lr = self.scheduler._get_lr(epoch)
-        logger.info(
-            "Training {} / {} epoch, with learning rate {}".format(
-                epoch + 1, self.total_epoch, lr
-            )
+        if self.is_main_process():
+            logger.info(
+                "Training {} / {} epoch, with learning rate {}".format(
+                    epoch + 1, self.total_epoch, lr
+                )
         )
         # Enable training mode
         self.model.train()
@@ -111,11 +133,12 @@ class Trainer():
             num_updates += 1
             self.scheduler.step_update(num_updates=num_updates, metric=loss_m.avg)
 
-        logger.info(
-            "Epoch {} / {}: ".format(epoch + 1, self.total_epoch)
-            + "average train loss: {:.2f}, ".format(loss_m.avg)
-            + "average train top1: {:.2f} ".format(top1_m.avg)
-            + "average train top5: {:.2f}".format(top5_m.avg))
+        if self.is_main_process():
+            logger.info(
+                "Epoch {} / {}: ".format(epoch + 1, self.total_epoch)
+                + "average train loss: {:.2f}, ".format(loss_m.avg)
+                + "average train top1: {:.2f} ".format(top1_m.avg)
+                + "average train top5: {:.2f}".format(top5_m.avg))
 
         return OrderedDict(
             [('loss', round(loss_m.avg, 2)), ('top1', round(top1_m.avg, 2)), ('top5', round(top5_m.avg, 2))])
@@ -140,8 +163,11 @@ class Trainer():
                 if self.params.early_patience > 0:
                     stop, save_model = self.early_stop_check.early_stop(eval_metrics)
                     if save_model and self.params.store_ckp:
-                        torch.save({'model_state_dict': self.model.state_dict()},
+                        if self.is_main_process():
+                            model_to_save = self.model.module if hasattr(self.model, "module") else self.model
+                            torch.save({'model_state_dict': model_to_save.state_dict()},
                                    os.path.join(self.params.output_dir, 'model.pt'))
+
                     if stop:
                         return train_metrics, self.early_stop_check.max_metrics, eval_metrics
                 if self.params.debug:
@@ -151,38 +177,64 @@ class Trainer():
             self.scheduler.step(epoch)
 
         if self.params.store_ckp and not os.path.isfile(os.path.join(self.params.output_dir, 'model.pt')):
-            torch.save({'model_state_dict': self.model.state_dict()}, os.path.join(self.params.output_dir, 'model.pt'))
+            if self.is_main_process():
+                model_to_save = self.model.module if hasattr(self.model, "module") else self.model
+                torch.save({'model_state_dict': model_to_save.state_dict()},
+                            os.path.join(self.params.output_dir, 'model.pt'))
         return train_metrics, self.early_stop_check.max_metrics, eval_metrics
 
     @torch.no_grad()
     def eval_classifier(self, loader, prefix):
-        """evaluate classifier"""
-
-        loss_m = AverageMeter()
-        top1_m = AverageMeter()
-        top5_m = AverageMeter()
-
-        # Enable eval mode
         self.model.eval()
 
-        with torch.no_grad():
-            for batch_idx, (samples, targets) in enumerate(loader):
-                loss, outputs, (acc1, acc5) = self.forward_one_batch(samples, targets, False)
-                if not isinstance(loss, int):
-                    loss_m.update(loss.item(), samples.shape[0])
-                    top1_m.update(acc1.item(), samples.shape[0])
-                    top5_m.update(acc5.item(), samples.shape[0])
-                del loss, outputs, acc1, acc5
-        logger.info(
-            f"Inference ({prefix}):"
-            + "average loss: {:.2f}, ".format(loss_m.avg)
-            + "average top1: {:.2f} ".format(top1_m.avg)
-            + "average top5: {:.2f}".format(top5_m.avg))
+        total_samples = torch.tensor(0.0, device=self.device)
+        top1_correct = torch.tensor(0.0, device=self.device)
+        top5_correct = torch.tensor(0.0, device=self.device)
+        total_loss = torch.tensor(0.0, device=self.device)
+
+        for samples, targets in loader:
+            loss, outputs, (acc1, acc5) = self.forward_one_batch(samples, targets, False)
+
+            if isinstance(loss, int):
+                continue
+
+            batch_size = samples.size(0)
+            total_samples += batch_size
+            total_loss += loss * batch_size
+            top1_correct += acc1 * batch_size / 100.0
+            top5_correct += acc5 * batch_size / 100.0
+
+        # -------- DDP sync --------
+        if getattr(self.params, "distributed", False):
+            reduce_tensor(total_samples)
+            reduce_tensor(total_loss)
+            reduce_tensor(top1_correct)
+            reduce_tensor(top5_correct)
+
+        # -------- compute final metrics on rank-0 --------
+        avg_loss = (total_loss / total_samples).item()
+        top1 = (top1_correct / total_samples * 100).item()
+        top5 = (top5_correct / total_samples * 100).item()
+
+        if self.is_main_process():
+            logger.info(
+                f"Inference ({prefix}): "
+                f"loss {avg_loss:.2f}, "
+                f"top1 {top1:.2f}, "
+                f"top5 {top5:.2f}"
+            )
+
         return OrderedDict(
-            [('loss', round(loss_m.avg, 2)), ('top1', round(top1_m.avg, 2)), ('top5', round(top5_m.avg, 2))])
+            [('loss', round(avg_loss, 2)),
+            ('top1', round(top1, 2)),
+            ('top5', round(top5, 2))]
+        )
 
     def load_weight(self):
-        self.model.load_state_dict(torch.load(self.params.output_dir + '/model.pt')['model_state_dict'])
+        state = torch.load(self.params.output_dir + '/model.pt', map_location="cpu")
+        model_to_load = self.model.module if hasattr(self.model, "module") else self.model
+        model_to_load.load_state_dict(state['model_state_dict'])
+
 
     @torch.no_grad()
     def collect_logits(self, loader):
