@@ -37,7 +37,7 @@ def get_model(params,visualize=False):
 
     model_grad_params_no_head = log_model_info(model, logger)
 
-    model = model.cuda(device=params.device)
+    model = model.to(params.device)
     return model, tune_parameters, model_grad_params_no_head
 
 
