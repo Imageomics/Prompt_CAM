@@ -77,21 +77,44 @@ cub/
 
 ## CUB
 
-- Download prepared dataset
-    - From [![](https://img.shields.io/badge/google_drive-yellow)](https://drive.google.com/drive/folders/1X3ikQEk_D7cKcyCnxbF3kJTsZ0LZfvVO?usp=sharing)
-- `Or` Prepare the dataset by yourself
-    - You can download the CUB dataset from [the original website](https://www.vision.caltech.edu/datasets/cub_200_2011/) and put it in the `data/images/` folder.
-    - You can use the dataset's provided train/val split to create the train/val splits and have their class numbers as the `prefix` of the respective image folder names(starting from 1).
-    - The code will automatically create train and val annotation files in the `data/annotations/` folder for each dataset if not provided.
+1. Download `CUB_200_2011.tgz` from [the official website](https://www.vision.caltech.edu/datasets/cub_200_2011/) and extract it:
+    ```bash
+    tar -xzf CUB_200_2011.tgz
+    ```
+    You will get a `CUB_200_2011/` folder containing `images/`, `images.txt`, and `train_test_split.txt`.
+
+2. Run the preparation script to arrange the images into the required structure:
+    ```bash
+    python data/prepare_cub.py \
+        --cub_dir /path/to/CUB_200_2011 \
+        --out_dir /path/to/data/images/cub
+    ```
+
+The script uses the official train/test split and organises images into `cub/train/` and `cub/val/` with class folders named `NNN.ClassName` (e.g. `001.Black_footed_Albatross`).
 
 </details>
 <details>
 <summary>Prepare Oxford Pet dataset</summary>
 
 ## Pet Dataset
-- Download prepared dataset
-    - From [![](https://img.shields.io/badge/google_drive-yellow
-)](https://drive.google.com/drive/folders/1X3ikQEk_D7cKcyCnxbF3kJTsZ0LZfvVO?usp=sharing)
+
+1. Download both archives from [the official website](https://www.robots.ox.ac.uk/~vgg/data/pets/) and extract them:
+    ```bash
+    tar -xzf images.tar.gz
+    tar -xzf annotations.tar.gz
+    ```
+    You will get an `images/` folder with all `.jpg` files and an `annotations/` folder containing `trainval.txt` and `test.txt`.
+
+2. Run the preparation script to arrange the images into the required structure:
+    ```bash
+    python data/prepare_pet.py \
+        --images_dir /path/to/images \
+        --annotations_dir /path/to/annotations \
+        --out_dir /path/to/data/images/pet
+    ```
+
+The script maps `trainval.txt` → `pet/train/` and `test.txt` → `pet/val/`, with class folders named `NNN.BreedName` (e.g. `001.Abyssinian`).
+
 </details>
 
 **To add new dataset, see [Extensions](#extensions)**
