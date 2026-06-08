@@ -28,3 +28,4 @@ pip install ftfy regex tqdm --no-cache-dir
 pip install pandas --no-cache-dir
 pip install matplotlib --no-cache-dir
 pip install ipykernel --no-cache-dir
+pip install gradio --no-cache-dir

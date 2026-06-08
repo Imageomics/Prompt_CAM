@@ -29,9 +29,15 @@ Witness the important traits of different class through the lens of Prompt-CAM w
 
 👉 Try our demo locally in [![](https://img.shields.io/badge/notebook-orange
 )](demo.ipynb)
-- Setup the [envoiroment](#environment-setup)
+- Setup the [environment](#environment-setup)
 - download the pre-trained model from link below!
 - run the demo.
+
+👉 Or launch the interactive **web app** (no Python editing required):
+```bash
+python app.py
+```
+Then open the URL shown in your terminal (e.g. `http://localhost:7860`).
 
 
 👉  You can extend this code base to include: [New datasets](#to-add-a-new-dataset) and [New backbones](#to-add-a-new-backbone) 
