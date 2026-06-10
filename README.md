@@ -1,6 +1,6 @@
-# :mag: Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis(CVPR'25)
+# :mag: Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis (CVPR'25)
 
-This is an official implementation for [PROMPT-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis](https://arxiv.org/pdf/2501.09333) (CVPR'25)
+This is an official implementation for [Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis](https://doi.org/10.1109/CVPR52734.2025.00413) (CVPR'25).
 
 Introducing **Prompt-CAM**, a $${\textcolor{red}{\text{simple yet effective}}}$$ **interpretable transformer** that requires no architectural modifications to pre-trained ViTs, we just have to inject **class-specific prompts** into any ViT to make them interpretable.
 
@@ -120,11 +120,11 @@ The script maps `trainval.txt` → `pet/train/` and `test.txt` → `pet/val/`, w
 **To add new dataset, see [Extensions](#extensions)**
 
 ## Results + Checkpoints:
-- Download from the links below and put it in the `checkpoints/{model}/{dataset}/` folder.
+- Download the appropriate model checkpoint from our [Hugging Face repository](https://huggingface.co/imageomics/Prompt-CAM) and put it in the `checkpoints/{model}/{dataset}/` folder.
 
 Backbone | Dataset | Prompt-CAM(Acc top%1) | Checkpoint Link|
 --- | --- | --- | --- |
-dino | cub (CUB)| 73.2 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dino | cub (CUB)| 73.2 | [Prompt_CAM_checkpoint_dino_cub.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dino_cub.pt) |
 dino | car (Stanford Cars) | 83.2 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
 dino | dog (Stanford Dogs) | 81.1 |[url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
 dino | pet (Oxford Pet) | 91.3 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
@@ -221,7 +221,8 @@ See [Visualization](#evaluation-and-visualization) above.
 - add another option in `--pretrained_weights` and `--model` in `setup_parser()` function of [main.py](main.py) to include the new backbone.
 
 
-# Citation [![Paper](https://img.shields.io/badge/paper-2501.09333-blue)](https://arxiv.org/pdf/2501.09333)
+# Citation [![Paper](https://img.shields.io/badge/Paper-2501.09333-blue)](https://doi.org/10.1109/CVPR52734.2025.00413) [![Open-Access Paper](https://img.shields.io/badge/Paper-Open--Access-blue)](https://openaccess.thecvf.com/content/CVPR2025/papers/Chowdhury_Prompt-CAM_Making_Vision_Transformers_Interpretable_for_Fine-Grained_Analysis_CVPR_2025_paper.pdf)
+
 If you find this repository useful, please consider citing our work :pencil: and giving a star :star2: :
 ```
 @InProceedings{Chowdhury_2025_CVPR,
