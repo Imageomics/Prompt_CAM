@@ -29,8 +29,6 @@ Witness the important traits of different class through the lens of Prompt-CAM w
 
 👉 Try our demo locally in [![](https://img.shields.io/badge/notebook-orange
 )](demo.ipynb)
-- Setup the [envoiroment](#environment-setup)
-- download the pre-trained model from link below!
 - Setup the [environment](#environment-setup).
 - Download the pre-trained models from our [Hugging Face repo](https://huggingface.co/imageomics/Prompt-CAM)!
 - Run the demo.
