@@ -31,7 +31,9 @@ Witness the important traits of different class through the lens of Prompt-CAM w
 )](demo.ipynb)
 - Setup the [envoiroment](#environment-setup)
 - download the pre-trained model from link below!
-- run the demo.
+- Setup the [environment](#environment-setup).
+- Download the pre-trained models from our [Hugging Face repo](https://huggingface.co/imageomics/Prompt-CAM)!
+- Run the demo.
 
 
 👉  You can extend this code base to include: [New datasets](#to-add-a-new-dataset) and [New backbones](#to-add-a-new-backbone) 
