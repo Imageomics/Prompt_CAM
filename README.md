@@ -120,21 +120,21 @@ The script maps `trainval.txt` → `pet/train/` and `test.txt` → `pet/val/`, w
 **To add new dataset, see [Extensions](#extensions)**
 
 ## Results + Checkpoints:
-- Download the appropriate model checkpoint from our [Hugging Face repository](https://huggingface.co/imageomics/Prompt-CAM) and put it in the `checkpoints/{model}/{dataset}/` folder.
+- For each model, create a `{backbone}/{dataset}/` folder under the root-level `checkpoints/` directory, then download the appropriate model checkpoint into its folder and name it `model.pt` (e.g., `checkpoints/dino/cub/model.pt`). All checkpoints are available in our [Hugging Face repository](https://huggingface.co/imageomics/Prompt-CAM).
 
 Backbone | Dataset | Prompt-CAM(Acc top%1) | Checkpoint Link|
 --- | --- | --- | --- |
 dino | cub (CUB)| 73.2 | [Prompt_CAM_checkpoint_dino_cub.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dino_cub.pt) |
-dino | car (Stanford Cars) | 83.2 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
-dino | dog (Stanford Dogs) | 81.1 |[url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
-dino | pet (Oxford Pet) | 91.3 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
-dino | birds_525 (Birds-525) | 98.8 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dino | car (Stanford Cars) | 83.2 | [Prompt_CAM_checkpoint_dino_car.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dino_car.pt) |
+dino | dog (Stanford Dogs) | 81.1 |[Prompt_CAM_checkpoint_dino_dog.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dino_dog.pt) |
+dino | pet (Oxford Pet) | 91.3 | [Prompt_CAM_checkpoint_dino_pet.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dino_pet.pt) |
+dino | birds_525 (Birds-525) | 98.8 | [Prompt_CAM_checkpoint_dino_birds_525.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dino_birds_525.pt) |
 
 Backbone | Dataset | Prompt-CAM(Acc top%1) | Checkpoint Link|
 --- | --- | --- | --- |
-dinov2 | cub (CUB) | 74.1 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
-dinov2 | dog (Stanford Dogs) | 81.3| [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
-dinov2 | pet (Oxford Pet) | 92.7 | [url](https://drive.google.com/drive/folders/1UmHdGx4OtWCQ1GhHCrBArQeeX14FqwyY?usp=sharing) |
+dinov2 | cub (CUB) | 74.1 | [Prompt_CAM_checkpoint_dinov2_cub.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dinov2_cub.pt) |
+dinov2 | dog (Stanford Dogs) | 81.3| [Prompt_CAM_checkpoint_dinov2_dog.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dinov2_dog.pt) |
+dinov2 | pet (Oxford Pet) | 92.7 | [Prompt_CAM_checkpoint_dinov2_pet.pt](https://huggingface.co/imageomics/Prompt-CAM/blob/main/Prompt_CAM_checkpoint_dinov2_pet.pt) |
 
 ## Evaluation and Visualization
 - download the checkpoint from url in the [Table](#results--checkpoints) above and put it in the `checkpoints/{model}/{dataset}/` folder.
