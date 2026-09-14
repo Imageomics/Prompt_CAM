@@ -1,0 +1,31 @@
+{
+    "creators": [
+        {
+            "name": "Chowdhury, Arpita",
+            "affiliation": "The Ohio State University"
+        },
+        {
+            "name": "Campolongo, Elizabeth G.",
+            "affiliation": "The Ohio State University"
+        }
+    ],
+    "description": "We present a simple usage of pre-trained Vision Transformers (ViTs) for fine-grained analysis, aiming to identify and localize the traits that distinguish visually similar categories, such as different bird species or dog breeds.",
+    "keywords": [
+        "explainable-ai",
+        "interpretable-ai",
+        "imageomics",
+        "fine-grained-classification",
+        "vision-transformer",
+        "interpretable"
+    ],
+    "title": "Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis",
+    "version": "<release version>",
+    "license": "MIT",
+    "publication_date": "YYYY-MM-DD",
+    "grants": [
+        {
+            "id": "021nxhr62::2118240"
+        }
+    ],
+    "references": []
+}

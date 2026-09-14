@@ -1,51 +1,26 @@
-# This CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to generate yours today!
-
 cff-version: 1.2.0
 title: >-
   Prompt-CAM: Making Vision Transformers Interpretable for
   Fine-Grained Analysis
 message: >-
-  If you use this software, please cite it using the
-  metadata from this file.
+  If you find this software helpful in your research, please
+  cite both the software and our paper (see README for the
+  paper citation).
 type: software
 authors:
   - given-names: Arpita
     family-names: Chowdhury
-  - given-names: Dipanjyoti
-    family-names: Paul
-  - given-names: Zheda
-    family-names: Mai
-  - given-names: Jianyang
-    family-names: Gu
-  - given-names: Ziheng
-    family-names: Zhang
-  - given-names: Kazi Sajeed
-    family-names: Mehrab
+    affiliation: The Ohio State University
   - given-names: Elizabeth G.
     family-names: Campolongo
-  - given-names: Daniel
-    family-names: Rubenstein
-  - given-names: Charles V.
-    family-names: Stewart
-  - given-names: Anuj
-    family-names: Karpatne
-  - given-names: Tanya
-    family-names: Berger-Wolf
-  - given-names: Yu
-    family-names: Su
-  - given-names: Wei-Lun
-    family-names: Chao
-identifiers:
-  - type: url
-    value: 'https://arxiv.org/pdf/2501.09333'
-repository-code: 'https://github.com/Imageomics/Prompt_CAM'
+    affiliation: The Ohio State University
 abstract: >-
   We present a simple usage of pre-trained Vision
   Transformers (ViTs) for fine-grained analysis, aiming to
   identify and localize the traits that distinguish visually
   similar categories, such as different bird species or dog
-  breeds. 
+  breeds.
+repository-code: 'https://github.com/Imageomics/Prompt_CAM'
 keywords:
   - explainable-ai
   - interpretable-ai
@@ -54,6 +29,18 @@ keywords:
   - vision-transformer
   - interpretable
 license: MIT
-commit: Prompt-CAM
-version: 1.0.0
-date-released: '2025-03-24'
+# TODO at release time: add version, date-released, and identifiers
+# (release tag URL + tagged commit URL) below, then uncomment doi
+# once Zenodo mints it. See:
+# https://imageomics.github.io/Imageomics-guide/wiki-guide/GitHub-Repo-Guide/#citation-templates
+#
+# version: <release version>
+# date-released: "YYYY-MM-DD"
+# identifiers:
+#   - description: "The GitHub release URL of tag <version>."
+#     type: url
+#     value: "https://github.com/Imageomics/Prompt_CAM/releases/tag/<tag-name>"
+#   - description: "The GitHub URL of the commit tagged with <tag-name>."
+#     type: url
+#     value: "https://github.com/Imageomics/Prompt_CAM/tree/<commit-hash>"
+#doi: <version-agnostic DOI from Zenodo>
