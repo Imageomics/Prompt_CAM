@@ -34,12 +34,12 @@ license: MIT
 # once Zenodo mints it. See:
 # https://imageomics.github.io/Imageomics-guide/wiki-guide/GitHub-Repo-Guide/#citation-templates
 #
-# version: <release version>
-# date-released: "YYYY-MM-DD"
-# identifiers:
-#   - description: "The GitHub release URL of tag <version>."
-#     type: url
-#     value: "https://github.com/Imageomics/Prompt_CAM/releases/tag/<tag-name>"
+version: 1.1.0
+date-released: "2026-10-09"
+identifiers:
+  - description: "The GitHub release URL of tag v1.1.0."
+     type: url
+     value: "https://github.com/Imageomics/Prompt_CAM/releases/tag/v1.1.0"
 #   - description: "The GitHub URL of the commit tagged with <tag-name>."
 #     type: url
 #     value: "https://github.com/Imageomics/Prompt_CAM/tree/<commit-hash>"
