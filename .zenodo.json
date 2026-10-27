@@ -21,7 +21,7 @@
     "title": "Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis",
     "version": "1.1.0",
     "license": "MIT",
-    "publication_date": "2026-10-26",
+    "publication_date": "2026-10-28",
     "grants": [
         {
             "id": "021nxhr62::2118240"

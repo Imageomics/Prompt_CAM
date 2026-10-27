@@ -35,7 +35,7 @@ license: MIT
 # https://imageomics.github.io/Imageomics-guide/wiki-guide/GitHub-Repo-Guide/#citation-templates
 #
 version: 1.1.0
-date-released: "2026-10-26"
+date-released: "2026-10-28"
 identifiers:
   - description: "The GitHub release URL of tag v1.1.0."
      type: url
