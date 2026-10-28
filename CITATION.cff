@@ -8,12 +8,12 @@ message: >-
   paper citation).
 type: software
 authors:
-  - given-names: Arpita
-    family-names: Chowdhury
-    affiliation: The Ohio State University
-  - given-names: Elizabeth G.
-    family-names: Campolongo
-    affiliation: The Ohio State University
+- given-names: Arpita
+  family-names: Chowdhury
+  affiliation: The Ohio State University
+- given-names: Elizabeth G.
+  family-names: Campolongo
+  affiliation: The Ohio State University
 abstract: >-
   We present a simple usage of pre-trained Vision
   Transformers (ViTs) for fine-grained analysis, aiming to
