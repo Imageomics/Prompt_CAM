@@ -1,7 +1,5 @@
 cff-version: 1.2.0
-title: >-
-  Prompt-CAM: Making Vision Transformers Interpretable for
-  Fine-Grained Analysis
+title: "Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis"
 message: >-
   If you find this software helpful in your research, please
   cite both the software and our paper (see README for the
