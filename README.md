@@ -1,4 +1,4 @@
-# :mag: Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis (CVPR'25)
+# :mag: Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis (CVPR'25) [![DOI](https://zenodo.org/badge/939795769.svg)](https://doi.org/10.5281/zenodo.23771484)
 
 This is an official implementation for [Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis](https://doi.org/10.1109/CVPR52734.2025.00413) (CVPR'25).
 
