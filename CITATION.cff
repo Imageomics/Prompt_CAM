@@ -1,19 +1,17 @@
 cff-version: 1.2.0
-title: >-
-  Prompt-CAM: Making Vision Transformers Interpretable for
-  Fine-Grained Analysis
+title: "Prompt-CAM: Making Vision Transformers Interpretable for Fine-Grained Analysis"
 message: >-
   If you find this software helpful in your research, please
   cite both the software and our paper (see README for the
   paper citation).
 type: software
 authors:
-  - given-names: Arpita
-    family-names: Chowdhury
-    affiliation: The Ohio State University
-  - given-names: Elizabeth G.
-    family-names: Campolongo
-    affiliation: The Ohio State University
+- given-names: Arpita
+  family-names: Chowdhury
+  affiliation: The Ohio State University
+- given-names: Elizabeth G.
+  family-names: Campolongo
+  affiliation: The Ohio State University
 abstract: >-
   We present a simple usage of pre-trained Vision
   Transformers (ViTs) for fine-grained analysis, aiming to
@@ -35,7 +33,7 @@ license: MIT
 # https://imageomics.github.io/Imageomics-guide/wiki-guide/GitHub-Repo-Guide/#citation-templates
 #
 version: 1.1.0
-date-released: "2026-10-28"
+date-released: "2026-10-29"
 identifiers:
   - description: "The GitHub release URL of tag v1.1.0."
      type: url
