@@ -28,17 +28,16 @@ keywords:
   - interpretable
 license: MIT
 # TODO at release time: add version, date-released, and identifiers
-# (release tag URL + tagged commit URL) below, then uncomment doi
-# once Zenodo mints it. See:
+# (release tag URL + tagged commit URL) below. See:
 # https://imageomics.github.io/Imageomics-guide/wiki-guide/GitHub-Repo-Guide/#citation-templates
 #
 version: 1.1.0
 date-released: "2026-10-29"
 identifiers:
   - description: "The GitHub release URL of tag v1.1.0."
-     type: url
-     value: "https://github.com/Imageomics/Prompt_CAM/releases/tag/v1.1.0"
-#   - description: "The GitHub URL of the commit tagged with <tag-name>."
-#     type: url
-#     value: "https://github.com/Imageomics/Prompt_CAM/tree/<commit-hash>"
-#doi: <version-agnostic DOI from Zenodo>
+    type: url
+    value: "https://github.com/Imageomics/Prompt_CAM/releases/tag/v1.1.0"
+  - description: "The GitHub URL of the commit tagged with v1.1.0."
+    type: url
+    value: "https://github.com/Imageomics/Prompt_CAM/tree/9f6d738727e95809ebf15bfc54dfa857e53abe8e"
+doi: 10.5281/zenodo.23771484
